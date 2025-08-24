@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../template.xsl"?>
+<page type="post">
+    <title>Structured Data with XML</title>
+
+    <headerContent>
+        <h1>Structured Data with XML</h1>
+        <p>Demonstrating how XML and XSLT can handle complex data structures, tables, and hierarchical content with ease.</p>
+    </headerContent>
+
+    <mainContent>
+        <article class="post-content">
+            <div class="post-meta">
+                <span class="date">January 25, 2024</span>
+                <span class="category">Data</span>
+                <div class="tags">
+                    <span class="tag">XML</span>
+                    <span class="tag">Data Structures</span>
+                    <span class="tag">Content Management</span>
+                </div>
+            </div>
+
+            <section id="data-tables">
+                <h2>Processing Tabular Data</h2>
+                <p>XSLT excels at transforming structured data into HTML tables with sorting, filtering, and formatting:</p>
+                
+                <dataTable>
+                    <table name="browser-support">
+                        <headers>
+                            <header>Browser</header>
+                            <header>XSLT 1.0</header>
+                            <header>XSLT 2.0</header>
+                            <header>Market Share</header>
+                            <header>Notes</header>
+                        </headers>
+                        <rows>
+                            <row>
+                                <cell>Chrome</cell>
+                                <cell status="full">Full</cell>
+                                <cell status="none">None</cell>
+                                <cell>65.2%</cell>
+                                <cell>Best XSLT performance</cell>
+                            </row>
+                            <row>
+                                <cell>Firefox</cell>
+                                <cell status="full">Full</cell>
+                                <cell status="none">None</cell>
+                                <cell>13.1%</cell>
+                                <cell>Good debugging tools</cell>
+                            </row>
+                            <row>
+                                <cell>Safari</cell>
+                                <cell status="partial">Partial</cell>
+                                <cell status="none">None</cell>
+                                <cell>18.7%</cell>
+                                <cell>Some quirks</cell>
+                            </row>
+                            <row>
+                                <cell>Edge</cell>
+                                <cell status="full">Full</cell>
+                                <cell status="none">None</cell>
+                                <cell>3.0%</cell>
+                                <cell>Improved recently</cell>
+                            </row>
+                        </rows>
+                    </table>
+                </dataTable>
+            </section>
+
+            <section id="hierarchical-data">
+                <h2>Hierarchical Content</h2>
+                <p>XML naturally represents nested data structures, and XSLT can render them in various formats:</p>
+                
+                <taxonomy>
+                    <category name="Web Technologies">
+                        <subcategory name="Frontend">
+                            <item popularity="high">HTML</item>
+                            <item popularity="high">CSS</item>
+                            <item popularity="high">JavaScript</item>
+                            <item popularity="low">XSLT</item>
+                        </subcategory>
+                        <subcategory name="Backend">
+                            <item popularity="high">Node.js</item>
+                            <item popularity="medium">Python</item>
+                            <item popularity="medium">PHP</item>
+                            <item popularity="low">XML/XSLT</item>
+                        </subcategory>
+                    </category>
+                    <category name="Data Formats">
+                        <subcategory name="Structured">
+                            <item popularity="high">JSON</item>
+                            <item popularity="medium">XML</item>
+                            <item popularity="low">YAML</item>
+                        </subcategory>
+                        <subcategory name="Binary">
+                            <item popularity="medium">Protocol Buffers</item>
+                            <item popularity="low">MessagePack</item>
+                        </subcategory>
+                    </category>
+                </taxonomy>
+            </section>
+
+            <section id="complex-content">
+                <h2>Mixed Content Types</h2>
+                <p>XML can seamlessly handle mixed content with different formatting requirements:</p>
+                
+                <mixedContent>
+                    <paragraph>This is regular paragraph content with <emphasis>emphasized text</emphasis> and <code>inline code</code>.</paragraph>
+                    <codeBlock language="xslt">
+                        <xsl:template match="emphasis">
+                          <em><xsl:value-of select="."/></em>
+                        </xsl:template>
+                    </codeBlock>
+                    <list type="ordered">
+                        <item>First item with <link href="https://example.com">external link</link></item>
+                        <item>Second item with nested content:
+                            <sublist>
+                                <item>Nested item A</item>
+                                <item>Nested item B</item>
+                            </sublist>
+                        </item>
+                        <item>Third item</item>
+                    </list>
+                </mixedContent>
+            </section>
+        </article>
+    </mainContent>
+
+    <footerContent>
+        <p>A collaborative creation exploring web technologies.</p>
+    </footerContent>
+</page>

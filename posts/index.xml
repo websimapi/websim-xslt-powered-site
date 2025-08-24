@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../template.xsl"?>
+<page type="post-index">
+    <title>All Posts</title>
+
+    <headerContent>
+        <h1>Blog Posts</h1>
+        <p>Exploring web technologies through practical examples and deep technical analysis.</p>
+    </headerContent>
+
+    <mainContent>
+        <section id="posts-list">
+            <h2>Technical Articles</h2>
+            <postsList>
+                <post>
+                    <title>Deep Dive: The No-JS Static Site with XSLT</title>
+                    <url>deep-dive-xslt.xml</url>
+                    <date>2024-01-15</date>
+                    <category>Web Development</category>
+                    <description>An analysis of the Evidlo/xsl-website repository and the art of building websites with zero JavaScript, no build steps, and no server-side code.</description>
+                    <tags>
+                        <tag>XSLT</tag>
+                        <tag>XML</tag>
+                        <tag>Static Sites</tag>
+                        <tag>No-Build</tag>
+                    </tags>
+                </post>
+                <post>
+                    <title>Advanced XSLT Patterns</title>
+                    <url>advanced-xslt.xml</url>
+                    <date>2024-01-20</date>
+                    <category>XSLT</category>
+                    <description>Exploring sophisticated XSLT templating techniques including conditional logic, loops, and data transformation patterns.</description>
+                    <tags>
+                        <tag>XSLT</tag>
+                        <tag>Templates</tag>
+                        <tag>XML Processing</tag>
+                    </tags>
+                </post>
+                <post>
+                    <title>Structured Data with XML</title>
+                    <url>structured-data.xml</url>
+                    <date>2024-01-25</date>
+                    <category>Data</category>
+                    <description>Demonstrating how XML and XSLT can handle complex data structures, tables, and hierarchical content with ease.</description>
+                    <tags>
+                        <tag>XML</tag>
+                        <tag>Data Structures</tag>
+                        <tag>Content Management</tag>
+                    </tags>
+                </post>
+            </postsList>
+        </section>
+    </mainContent>
+
+    <footerContent>
+        <p>A collaborative creation exploring web technologies.</p>
+    </footerContent>
+</page>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="template.xsl"?>
+<page>
+    <title>My XSLT-Powered Blog</title>
+
+    <headerContent>
+        <h1>The XSLT-Powered Static Site</h1>
+        <p>An analysis of the <code>Evidlo/xsl-website</code> repository and the art of building websites with zero JavaScript, no build steps, and no server-side code.</p>
+    </headerContent>
+
+    <mainContent>
+        <section id="introduction">
+            <h2>Welcome to the Future of Simple Web Development</h2>
+            <p>This site demonstrates the power and elegance of building static websites using only browser-native technologies: XML for content, XSLT for templating, and CSS for styling. No JavaScript frameworks, no build processes, no dependency management—just the web platform as it was designed to work.</p>
+        </section>
+
+        <section id="features">
+            <h2>What This Site Demonstrates</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🚀 Zero Build Time</h3>
+                    <p>Edit content and see changes instantly. No compilation, no bundling, no watching for file changes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Structured Data Processing</h3>
+                    <p>Handle complex data structures, tables, and hierarchical content with sophisticated XSLT transformations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎨 Conditional Templating</h3>
+                    <p>Dynamic content rendering based on data attributes and content types, all processed client-side.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 Modern Design</h3>
+                    <p>Responsive layout with dark/light mode support and contemporary CSS features.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="quick-links">
+            <h2>Explore the Capabilities</h2>
+            <ul class="quick-links">
+                <li><a href="posts/index.xml">Browse All Posts →</a> - See structured content management in action</li>
+                <li><a href="posts/advanced-xslt.xml">Advanced XSLT Patterns →</a> - Learn sophisticated templating techniques</li>
+                <li><a href="posts/structured-data.xml">Structured Data Examples →</a> - Explore data processing capabilities</li>
+                <li><a href="about.xml">About This Project →</a> - Understand the philosophy and architecture</li>
+            </ul>
+        </section>
+    </mainContent>
+
+    <footerContent>
+        <p>A collaborative creation exploring web technologies.</p>
+    </footerContent>
+</page>
+

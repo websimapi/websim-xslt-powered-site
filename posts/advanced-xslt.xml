@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../template.xsl"?>
+<page type="post">
+    <title>Advanced XSLT Patterns</title>
+
+    <headerContent>
+        <h1>Advanced XSLT Patterns</h1>
+        <p>Exploring sophisticated XSLT templating techniques including conditional logic, loops, and data transformation patterns.</p>
+    </headerContent>
+
+    <mainContent>
+        <article class="post-content">
+            <div class="post-meta">
+                <span class="date">January 20, 2024</span>
+                <span class="category">XSLT</span>
+                <div class="tags">
+                    <span class="tag">XSLT</span>
+                    <span class="tag">Templates</span>
+                    <span class="tag">XML Processing</span>
+                </div>
+            </div>
+
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>While basic XSLT transformations can handle simple content, the real power of XSLT emerges when you leverage its advanced features for complex data processing and conditional rendering.</p>
+            </section>
+
+            <section id="conditional-logic">
+                <h2>Conditional Logic in XSLT</h2>
+                <p>XSLT provides powerful conditional constructs that allow templates to adapt based on data content:</p>
+                
+                <h3>Basic Conditions</h3>
+                <pre><code class="language-xml">&lt;xsl:if test="@type='featured'"&gt;
+  &lt;div class="featured-badge"&gt;Featured&lt;/div&gt;
+&lt;/xsl:if&gt;</code></pre>
+
+                <h3>Multiple Conditions</h3>
+                <pre><code class="language-xml">&lt;xsl:choose&gt;
+  &lt;xsl:when test="@priority='high'"&gt;
+    &lt;span class="priority-high"&gt;High Priority&lt;/span&gt;
+  &lt;/xsl:when&gt;
+  &lt;xsl:when test="@priority='medium'"&gt;
+    &lt;span class="priority-medium"&gt;Medium Priority&lt;/span&gt;
+  &lt;/xsl:when&gt;
+  &lt;xsl:otherwise&gt;
+    &lt;span class="priority-low"&gt;Low Priority&lt;/span&gt;
+  &lt;/xsl:otherwise&gt;
+&lt;/xsl:choose&gt;</code></pre>
+            </section>
+
+            <section id="data-processing">
+                <h2>Data Processing Examples</h2>
+                <p>Here are some real examples of XSLT processing structured data:</p>
+                
+                <exampleData>
+                    <libraries>
+                        <library name="React" type="framework" popularity="9.2" year="2013"/>
+                        <library name="Vue" type="framework" popularity="8.8" year="2014"/>
+                        <library name="XSLT" type="transformation" popularity="6.5" year="1999"/>
+                        <library name="jQuery" type="library" popularity="7.1" year="2006"/>
+                    </libraries>
+                </exampleData>
+            </section>
+
+            <section id="template-modes">
+                <h2>Template Modes and Named Templates</h2>
+                <p>XSLT allows you to create reusable template components and apply different processing modes to the same data:</p>
+                
+                <pre><code class="language-xml">&lt;!-- Named template for reusable components --&gt;
+&lt;xsl:template name="format-date"&gt;
+  &lt;xsl:param name="date"/&gt;
+  &lt;time datetime="{$date}"&gt;
+    &lt;xsl:value-of select="$date"/&gt;
+  &lt;/time&gt;
+&lt;/xsl:template&gt;
+
+&lt;!-- Template modes for different contexts --&gt;
+&lt;xsl:template match="post" mode="summary"&gt;
+  &lt;div class="post-summary"&gt;
+    &lt;h3&gt;&lt;xsl:value-of select="title"/&gt;&lt;/h3&gt;
+    &lt;p&gt;&lt;xsl:value-of select="description"/&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/xsl:template&gt;</code></pre>
+            </section>
+        </article>
+    </mainContent>
+
+    <footerContent>
+        <p>A collaborative creation exploring web technologies.</p>
+    </footerContent>
+</page>
+

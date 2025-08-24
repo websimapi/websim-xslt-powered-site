@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../template.xsl"?>
+<page>
+    <title>Deep Dive: The No-JS Static Site with XSLT</title>
+
+    <headerContent>
+        <h1>Deep Dive: The No-JS Static Site with XSLT</h1>
+        <p>An analysis of the <code>Evidlo/xsl-website</code> repository and the art of building websites with zero JavaScript, no build steps, and no server-side code.</p>
+    </headerContent>
+
+    <mainContent>
+        <section id="overview">
+            <h2>1. Overview &amp; Purpose</h2>
+            <p>The <code>Evidlo/xsl-website</code> repository demonstrates a fascinating, minimalist approach to web development: building a static website using only browser-native XSLT (Extensible Stylesheet Language Transformations). The core idea is to completely avoid JavaScript, build tools (like Webpack or Vite), and server-side processing.</p>
+            <p>Its architecture is elegantly simple, relying on three key components:</p>
+            <ul>
+                <li><strong>XML Pages:</strong> Raw content and data structured in XML files (e.g., <code>index.xml</code>).</li>
+                <li><strong>XSL Template:</strong> A single XSL file (<code>template.xsl</code>) that defines the HTML structure and transforms the XML content into a viewable page.</li>
+                <li><strong>CSS Styling:</strong> A standard stylesheet (<code>styles.css</code>) to apply visual design to the generated HTML.</li>
+            </ul>
+        </section>
+
+        <section id="architecture">
+            <h2>2. Technical Architecture</h2>
+            <p>The magic happens directly in the browser. When a user navigates to an <code>.xml</code> file, the browser sees a special processing instruction at the top:</p>
+            <pre><code class="language-xml">&lt;?xml-stylesheet type="text/xsl" href="template.xsl"?&gt;</code></pre>
+            <p>This tells the browser to fetch <code>template.xsl</code> and use it to transform the current XML document into an HTML document. The browser's built-in XSLT processor handles this entire transformation client-side before rendering the page. Once the HTML is generated, the browser applies the linked CSS file as it would for any normal webpage.</p>
+            <p>The repository also showcases more advanced patterns, such as nested templates and modular content fields, demonstrating that this technique can be used for more than just the most basic sites.</p>
+        </section>
+
+        <section id="pros-cons">
+            <h2>3. Advantages &amp; Limitations</h2>
+            <div class="columns">
+                <div class="column">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><strong>No Build Step:</strong> Deploy by simply uploading files.</li>
+                        <li><strong>Simple Deployment:</strong> Works on any basic web server.</li>
+                        <li><strong>Standard URLs:</strong> Clean URLs ending in <code>.xml</code>.</li>
+                        <li><strong>Zero Dependencies:</strong> No npm, no frameworks, just the browser.</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li><strong>Manual Indexing:</strong> Servers don't list directory contents, so navigation links must be manually maintained.</li>
+                        <li><strong>Partial Browser Support:</strong> While widely supported, edge cases and inconsistencies exist.</li>
+                        <li><strong>XSLT 1.0 Only:</strong> Browsers are generally stuck on the older XSLT 1.0 standard.</li>
+                        <li><strong>Performance Pitfalls:</strong> Complex transformations can be slow on the client side.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="community">
+            <h2>4. Community Feedback</h2>
+            <p>The project sparked interesting discussions on platforms like Hacker News and Reddit, where it was praised for its clever, "retro-modern" simplicity.</p>
+            <blockquote class="quote">
+                <p>“A funky option for doing client-side includes and basic templating without JS.”</p>
+                <footer>— Hacker News Commenter</footer>
+            </blockquote>
+            <blockquote class="quote">
+                <p>“I love this! It reminds me of the ‘good old days’ of web development, where you could just FTP some files to a server and have a website. No complex build pipelines, no package managers, just simple, elegant files.”</p>
+                <footer>— Hacker News Commenter on "JavaScript-free (X)HTML Includes"</footer>
+            </blockquote>
+            <p>The author, Evidlo, also clarified a key limitation on Reddit:</p>
+            <blockquote class="quote">
+                <p>“...not possible to get file lists over HTTP... need manual index.”</p>
+                <footer>— Evidlo on Reddit</footer>
+            </blockquote>
+        </section>
+
+        <section id="use-cases">
+            <h2>5. Ideal Use Cases &amp; Pitfalls</h2>
+            <p>This setup is not a replacement for modern frameworks, but it excels in specific scenarios:</p>
+            <ul>
+                <li><strong>Documentation Sites:</strong> Where content is structured and changes are infrequent.</li>
+                <li><strong>Personal Blogs:</strong> For developers who value simplicity and full control.</li>
+                <li><strong>Archival Projects:</strong> Creating durable, dependency-free web content.</li>
+            </ul>
+            <p><strong>Potential Pitfalls:</strong> Be mindful of browser quirks, the lack of dynamic capabilities beyond what XSLT offers, and the developer ergonomics, which can feel dated compared to modern static site generators.</p>
+        </section>
+
+        <section id="tutorial">
+            <h2>6. Mini-Tutorial: Your First XSLT Blog</h2>
+            <p>Let's build a simple blog using this method. Create the following file structure:</p>
+            <pre><code class="language-bash">.
+├── styles.css
+├── template.xsl
+├── index.xml
+└── posts/
+    └── first-post.xml</code></pre>
+            
+            <h4>template.xsl (The Layout)</h4>
+            <pre><code class="language-xml"><![CDATA[<!-- template.xsl -->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/page">
+    <html>
+      <head>
+        <title><xsl:value-of select="title"/></title>
+        <link rel="stylesheet" type="text/css" href="/styles.css" />
+      </head>
+      <body>
+        <nav>
+          <a href="/index.xml">Home</a>
+          <a href="/posts/first-post.xml">First Post</a>
+        </nav>
+        <main>
+          <h1><xsl:value-of select="title"/></h1>
+          <xsl:copy-of select="content/node()"/>
+        </main>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>]]></code></pre>
+
+            <h4>index.xml (The Homepage)</h4>
+            <pre><code class="language-xml"><![CDATA[<!-- index.xml -->
+<?xml-stylesheet type="text/xsl" href="template.xsl"?>
+<page>
+  <title>Welcome to my Blog</title>
+  <content>
+    <p>This is the homepage. Check out my <a href="/posts/first-post.xml">first post</a>!</p>
+  </content>
+</page>]]></code></pre>
+
+             <h4>posts/first-post.xml (A Blog Post)</h4>
+            <pre><code class="language-xml"><![CDATA[<!-- posts/first-post.xml -->
+<?xml-stylesheet type="text/xsl" href="../template.xsl"?>
+<page>
+  <title>My First Post</title>
+  <content>
+    <p>This is the content of my first blog post. Hello, world!</p>
+  </content>
+</page>]]></code></pre>
+            <p>Upload these files to any static web host, and you have a functioning blog! Remember to update the navigation in <code>template.xsl</code> manually whenever you add a new post.</p>
+        </section>
+
+        <section id="references">
+            <h2>7. References</h2>
+            <ul class="references-list">
+                <li><a href="https://github.com/Evidlo/xsl-website" target="_blank" rel="noopener"><img src="/github-icon.png" alt="GitHub icon" class="icon"/>Evidlo/xsl-website Repository</a></li>
+                <li><a href="https://news.ycombinator.com/item?id=23110294" target="_blank" rel="noopener"><img src="/hacker-news-icon.png" alt="Hacker News icon" class="icon"/>Hacker News Discussion</a></li>
+                <li><a href="https://www.reddit.com/r/web_design/comments/gfsbvy/i_made_a_static_site_template_that_uses_clientside/" target="_blank" rel="noopener"><img src="/reddit-icon.png" alt="Reddit icon" class="icon"/>Reddit Discussion</a></li>
+            </ul>
+        </section>
+    </mainContent>
+
+    <footerContent>
+        <p>A collaborative creation exploring web technologies.</p>
+    </footerContent>
+</page>

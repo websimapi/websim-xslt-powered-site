@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="template.xsl"?>
+<page type="about">
+    <title>About This Project</title>
+
+    <headerContent>
+        <h1>About This Project</h1>
+        <p>Understanding the philosophy and technical implementation of XSLT-powered static sites.</p>
+    </headerContent>
+
+    <mainContent>
+        <section id="philosophy">
+            <h2>Project Philosophy</h2>
+            <p>This project demonstrates that modern web development doesn't always require complex toolchains, JavaScript frameworks, or build processes. Sometimes, the most elegant solution is to leverage the standards that have been part of the web platform for decades.</p>
+            
+            <div class="philosophy-points">
+                <principlesList>
+                    <principle icon="⚡" title="Zero Build Time">
+                        No compilation, no bundling, no watching for changes. Just edit and refresh.
+                    </principle>
+                    <principle icon="🎯" title="Standards-Based">
+                        Built on W3C standards that have been stable for over 20 years.
+                    </principle>
+                    <principle icon="📦" title="Dependency-Free">
+                        No npm packages, no version conflicts, no security vulnerabilities in dependencies.
+                    </principle>
+                    <principle icon="🔧" title="Platform Native">
+                        Uses the browser's built-in XSLT processor for maximum performance.
+                    </principle>
+                </principlesList>
+            </div>
+        </section>
+
+        <section id="architecture">
+            <h2>Technical Architecture</h2>
+            <p>The system consists of three main components working together:</p>
+            
+            <architectureComponents>
+                <component name="XML Content">
+                    <description>Structured content files that contain both data and metadata</description>
+                    <examples>
+                        <example>index.xml - Homepage content</example>
+                        <example>posts/*.xml - Blog post content</example>
+                        <example>about.xml - Static page content</example>
+                    </examples>
+                </component>
+                <component name="XSLT Template">
+                    <description>A single transformation template that converts XML to HTML</description>
+                    <features>
+                        <feature>Conditional rendering based on page type</feature>
+                        <feature>Dynamic navigation generation</feature>
+                        <feature>Structured data processing</feature>
+                        <feature>Responsive design integration</feature>
+                    </features>
+                </component>
+                <component name="CSS Styling">
+                    <description>Standard CSS with modern features for responsive, accessible design</description>
+                    <features>
+                        <feature>Dark/light mode support</feature>
+                        <feature>Mobile-first responsive design</feature>
+                        <feature>CSS Grid and Flexbox layouts</feature>
+                        <feature>Custom properties for theming</feature>
+                    </features>
+                </component>
+            </architectureComponents>
+        </section>
+
+        <section id="capabilities">
+            <h2>Demonstrated Capabilities</h2>
+            <p>This site showcases various XSLT and XML capabilities:</p>
+            
+            <capabilitiesList>
+                <capability category="Content Management">
+                    <item>Multiple content types (posts, pages, indexes)</item>
+                    <item>Structured metadata and taxonomies</item>
+                    <item>Automatic post listing and navigation</item>
+                    <item>Content categorization and tagging</item>
+                </capability>
+                <capability category="Data Processing">
+                    <item>Tabular data with conditional formatting</item>
+                    <item>Hierarchical content rendering</item>
+                    <item>Mixed content with inline formatting</item>
+                    <item>Dynamic HTML generation from structured data</item>
+                </capability>
+                <capability category="Advanced XSLT">
+                    <item>Conditional logic and template matching</item>
+                    <item>Template modes and named templates</item>
+                    <item>XPath expressions for data querying</item>
+                    <item>Variable and parameter passing</item>
+                </capability>
+            </capabilitiesList>
+        </section>
+    </mainContent>
+
+    <footerContent>
+        <p>A collaborative creation exploring web technologies.</p>
+    </footerContent>
+</page>
+
